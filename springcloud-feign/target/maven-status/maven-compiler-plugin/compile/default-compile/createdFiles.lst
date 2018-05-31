@@ -1,0 +1,4 @@
+org\springcloud\feign\service\FeignIntegerFaceHystric.class
+org\springcloud\feign\controller\FeignController.class
+org\springcloud\feign\FeignApplication.class
+org\springcloud\feign\service\FeignIntegerFace.class
