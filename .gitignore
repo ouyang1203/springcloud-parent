@@ -1,0 +1,7 @@
+*.class
+*.jar
+springcloud-Eureka/target/
+target
+.settings
+.project
+.classpath
