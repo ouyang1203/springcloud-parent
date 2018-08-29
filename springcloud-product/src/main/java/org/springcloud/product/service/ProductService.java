@@ -13,6 +13,9 @@ public class ProductService implements ITxTransaction{
 	
 	@Transactional
 	public int update(String name,int amount) {
-		return productDao.update(name,amount);
+		int a = productDao.update(name,amount);
+		//测试客户端出现异常回滚事物的代码需要打开下面的int c = 100/0;
+//		int c = 100/0;
+		return a;
 	}
 }

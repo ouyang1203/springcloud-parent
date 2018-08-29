@@ -30,7 +30,8 @@ public class OrderService implements ITxTransaction{
 		//当前服务的事物回滚成功
 		int a = orderDao.save(name, amount);
 		log_.info("订单模块插入完成,本次新增订单产品为:{},产品数量为:{}",new Object[]{name,amount});
-		int c = 100/0;
+		//测试服务端出现异常事物回滚的代码需要打开下面的int c = 100/0;
+//		int c = 100/0;
 		return a+b;
 	}
 	
