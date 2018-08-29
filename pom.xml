@@ -13,6 +13,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--     <lcn.last.version>4.1.0</lcn.last.version> -->
+    <mysql.version>8.0.11</mysql.version>
   </properties>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -30,14 +32,19 @@
     <module>springcloud-security</module>
     <module>springcloud-client</module>
     <module>springcloud-oauth2</module>
+    <module>spring-cloud-config-server</module>
+    <module>spring-cloud-config-client</module>
+    <module>springcloud-product</module>
+    <module>springcloud-order</module>
   </modules>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
       <scope>test</scope>
     </dependency>
+<!--     暂时不使用JDBC，注释到�? -->
 <!--     <dependency> -->
 <!--          <groupId>org.springframework.boot</groupId> -->
 <!--          <artifactId>spring-boot-starter-jdbc</artifactId> -->
@@ -68,7 +75,7 @@
 	    <artifactId>spring-cloud-starter-hystrix</artifactId>
 	</dependency>
 	<!--     Hystrix断路器依�?-->
-	<!-- 	Hystrix Dashboard (断路器：Hystrix 仪表�? -->
+	<!-- 	Hystrix Dashboard (断路器：Hystrix 仪表依赖 -->
 	<dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-actuator</artifactId>
@@ -77,7 +84,7 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
     </dependency>
-    <!-- 	Hystrix Dashboard (断路器：Hystrix 仪表�? -->
+    <!-- 	Hystrix Dashboard (断路器：Hystrix 仪表依赖 -->
 	<!--     zuul路由网关 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -90,6 +97,42 @@
     	<artifactId>spring-cloud-starter-oauth2</artifactId>
     </dependency>
     <!--      引入oauth2 -->
+<!--     LCN分布式事务相关依赖 -->
+<!-- 	<dependency> -->
+<!--            <groupId>com.codingapi</groupId> -->
+<!--            <artifactId>transaction-springcloud</artifactId> -->
+<!--            <version>${lcn.last.version}</version> -->
+<!--            <exclusions> -->
+<!--                <exclusion> -->
+<!--                    <groupId>org.slf4j</groupId> -->
+<!--                    <artifactId>*</artifactId> -->
+<!--                </exclusion> -->
+<!--            </exclusions> -->
+<!--        </dependency> -->
+<!--        <dependency> -->
+<!--            <groupId>com.codingapi</groupId> -->
+<!--            <artifactId>tx-plugins-db</artifactId> -->
+<!--            <version>${lcn.last.version}</version> -->
+<!--            <exclusions> -->
+<!--                <exclusion> -->
+<!--                    <groupId>org.slf4j</groupId> -->
+<!--                    <artifactId>*</artifactId> -->
+<!--                </exclusion> -->
+<!--            </exclusions> -->
+<!--        </dependency> -->
+<!--     springcloud config-server如果在此处引入会导致后续client获取不到配置�?,同时返回的结果也不是json格式的，是XML格式�? -->
+<!--     <dependency> -->
+<!-- 	    <groupId>org.springframework.cloud</groupId> -->
+<!-- 	    <artifactId>spring-cloud-config-server</artifactId> -->
+<!-- 	</dependency> -->
+	<dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-config-client</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
     <!-- 	添加mybatis依赖	-->
  		 <dependency>
             <groupId>org.mybatis</groupId>
@@ -102,14 +145,20 @@
             <version>3.2.8</version>
         </dependency>
 		<!--   添加mysql的jar     -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>c3p0</groupId> -->
+<!-- 			<artifactId>c3p0</artifactId> -->
+<!-- 			<version>0.9.1.2</version> -->
+<!-- 		</dependency> -->
 		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.19</version>
 		</dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
   </dependencies>
  <dependencyManagement>
